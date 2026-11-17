@@ -44,7 +44,7 @@
     button { -webkit-tap-highlight-color: transparent; }
     a { color: #78d6ff; text-decoration: none; }
     a:hover { color: #fff; }
-    :focus-visible { outline: 3px solid #00A6E4; outline-offset: 3px; }
+    a:focus-visible { outline: 3px solid #00A6E4; outline-offset: 3px; }
     ::selection { background: rgba(0,166,228,.42); color: #fff; }
     .defs { position: absolute; width: 0; height: 0; overflow: hidden; }
     .icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
@@ -62,13 +62,6 @@
     .brand-name { font-weight: 720; font-size: 1.02rem; letter-spacing: .02em; }
     .brand-cap { color: var(--muted-2); font-size: .72rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .tools { display: flex; align-items: center; gap: 8px; }
-    .switch { display: inline-flex; padding: 3px; border: 1px solid var(--line-strong); border-radius: 12px; background: rgba(255,255,255,.045); }
-    .switch button { min-width: 42px; min-height: 36px; padding: 4px 10px; border: 0; border-radius: 9px; background: transparent; color: var(--muted); font-size: .8rem; font-weight: 650; cursor: pointer; }
-    .switch button:hover { color: #fff; }
-    .switch button[aria-pressed="true"] { background: var(--accent); color: #fff; }
-    .icon-btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-width: 44px; height: 44px; padding: 0 12px; border: 1px solid var(--line-strong); border-radius: 12px; background: rgba(255,255,255,.045); color: #eee5f4; font-size: .8rem; font-weight: 600; cursor: pointer; transition: background .18s ease; }
-    .icon-btn:hover { background: rgba(255,255,255,.10); }
-    .icon-btn .label { display: none; }
 
     /* ---- chat ---- */
     .chat { flex: 1 1 auto; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 18px 14px 8px; scroll-padding-top: 12px; overscroll-behavior: contain; }
@@ -79,8 +72,6 @@
     .avatar { display: grid; place-items: center; flex: 0 0 auto; width: 30px; height: 30px; margin-top: 2px; border-radius: 10px; background: linear-gradient(145deg, #07549B, #04205F); color: #fff; }
     .bot-body { min-width: 0; flex: 1 1 auto; display: grid; gap: 10px; justify-items: start; }
     .bubble { max-width: min(100%, 620px); padding: 11px 15px; border-radius: 18px; overflow-wrap: anywhere; white-space: pre-wrap; font-size: .96rem; line-height: 1.75; }
-    .bot .bubble { border: 1px solid var(--line); border-top-left-radius: 6px; background: var(--card); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
-    .user .bubble { border-top-right-radius: 6px; background: var(--accent); color: #fff; }
     .bubble.err { border-color: rgba(230,160,160,.35); }
     .typing { display: inline-flex; gap: 5px; padding: 15px 16px; }
     .typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-light); animation: blink 1.1s ease-in-out infinite; }
@@ -153,15 +144,13 @@
     .copy-btn { display: inline-flex; align-items: center; gap: 7px; min-height: 40px; padding: 6px 14px; border: 1px solid var(--line-strong); border-radius: 12px; background: rgba(255,255,255,.06); color: #f3edf7; font-size: .82rem; font-weight: 600; cursor: pointer; }
     .copy-btn:hover { background: rgba(255,255,255,.12); }
 
-    /* ---- composer ---- */
-    .composer { padding: 8px 14px calc(10px + env(safe-area-inset-bottom, 0px)); background: linear-gradient(to top, rgba(8,7,11,.96) 60%, rgba(8,7,11,0)); }
+    /* ---- composer (floating over chat) ---- */
     .chips { display: flex; gap: 8px; margin-bottom: 8px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
     .chips::-webkit-scrollbar { display: none; }
     .chips:empty { display: none; }
-    .chip { flex: 0 0 auto; min-height: 38px; padding: 6px 13px; border: 1px solid var(--line-strong); border-radius: 12px; background: rgba(255,255,255,.05); color: #e8f6ff; font-size: .8rem; cursor: pointer; white-space: nowrap; }
+    .chip { flex: 0 0 auto; min-height: 38px; padding: 8px 16px; border: 1px solid var(--line-strong); border-radius: 999px; background: rgba(255,255,255,.05); color: #e8f6ff; font-size: .8rem; cursor: pointer; white-space: nowrap; }
     .chip:hover { background: rgba(255,255,255,.11); border-color: rgba(0,166,228,.4); }
     .compose { display: flex; align-items: flex-end; gap: 8px; padding: 6px 6px 6px 14px; border: 1px solid var(--line-strong); border-radius: 18px; background: rgba(22,20,27,.92); }
-    .compose:focus-within { border-color: var(--accent-light); }
     .compose textarea { flex: 1 1 auto; min-width: 0; max-height: 140px; padding: 9px 0; border: 0; outline: none; resize: none; background: transparent; font-size: 1rem; line-height: 1.5; color: var(--text); }
     .compose textarea::placeholder { color: var(--muted-2); }
     .send { display: grid; place-items: center; flex: 0 0 auto; width: 44px; height: 44px; border: 0; border-radius: 13px; background: var(--accent); color: #fff; cursor: pointer; transition: background .18s ease, opacity .18s ease; }
@@ -199,7 +188,7 @@
     }
     @keyframes cosmicDrift { from{transform:translate3d(-1%,0,0) scale(1)} to{transform:translate3d(1.5%,-1%,0) scale(1.06)} }
     .app { max-width:900px; padding-left:0; isolation:isolate; }
-    /* Keep the app's left edge clear for the native Android back control. */
+
     .top-actions {
       position:absolute; z-index:40; top:calc(10px + env(safe-area-inset-top,0px)); right:13px;
       display:flex; align-items:center;
@@ -215,7 +204,30 @@
     .menu-trigger:active { transform:scale(.94); background:rgba(20,55,95,.72); }
     .menu-trigger .dots { display:flex; gap:3px; }
     .menu-trigger .dots i { width:4px;height:4px;border-radius:50%;background:currentColor; }
-    .chat { padding:68px 15px 12px; }
+
+    .menu-trigger.is-morphing .dots {
+      animation: dotsMorph .42s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    @keyframes dotsMorph {
+      0%   { transform: rotate(0deg)   scale(1);   opacity: 1; }
+      55%  { transform: rotate(200deg) scale(.7);  opacity: .85; }
+      100% { transform: rotate(360deg) scale(0);   opacity: 0; }
+    }
+
+    /* Chat area with top & bottom fade (mask stays fixed regardless of scroll) */
+    .chat {
+      padding:68px 15px 12px;
+      -webkit-mask-image: linear-gradient(to bottom,
+        transparent 0,
+        #000 100px,
+        #000 calc(90% - 55px),
+        transparent 100%);
+      mask-image: linear-gradient(to bottom,
+        transparent 0,
+        #000 100px,
+        #000 calc(90% - 55px),
+        transparent 100%);
+    }
     .stream { gap:17px; }
     .msg.user { max-width:90%; }
     .avatar { display:none; }
@@ -231,12 +243,8 @@
       background:linear-gradient(135deg,rgba(4,32,95,.94),rgba(0,105,155,.88));
       box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 24px rgba(0,28,70,.22);
     }
-    .composer {
-      padding:9px 13px calc(13px + env(safe-area-inset-bottom,0px));
-      background:linear-gradient(to top,rgba(3,7,18,.94),rgba(3,7,18,.44) 76%,transparent);
-    }
     .chip {
-      border-radius:13px; border-color:rgba(151,203,246,.18); background:rgba(8,24,53,.54);
+      border-radius:999px; border-color:rgba(151,203,246,.18); background:rgba(8,24,53,.54);
       -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
       transition:transform .16s ease,background .16s ease,border-color .16s ease;
     }
@@ -247,10 +255,6 @@
       -webkit-backdrop-filter:blur(23px) saturate(145%); backdrop-filter:blur(23px) saturate(145%);
       box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 10px 30px rgba(0,0,0,.24);
       transition:border-color .2s ease,background .2s ease,box-shadow .2s ease;
-    }
-    .compose:focus-within {
-      border-color:rgba(0,166,228,.58); background:rgba(9,27,58,.82);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 0 0 2px rgba(0,166,228,.09),0 10px 30px rgba(0,0,0,.24);
     }
     .compose textarea { padding:10px 0; }
     .send {
@@ -283,31 +287,41 @@
       backdrop-filter:blur(28px) saturate(145%); box-shadow:0 18px 50px rgba(0,0,0,.46),inset 0 1px 0 rgba(255,255,255,.10);
     }
     .history-head { display:flex;justify-content:space-between;align-items:center;padding:13px 15px 10px;color:#e8f6ff;font-size:.88rem;font-weight:650; }
-    .history-close { border:0;background:transparent;color:#b8d9ef;font-size:23px;line-height:1;cursor:pointer; }
+    .history-close { border:0;background:transparent;color:#b8d9ef;font-size:23px;line-height:1;cursor:pointer; outline: none; }
     .history-list { display:grid;gap:4px;max-height:calc(min(62vh,460px) - 48px);overflow:auto;padding:0 8px 9px; }
-    .history-item { width:100%;display:block;text-align:start;padding:11px 12px;border:1px solid transparent;border-radius:12px;background:transparent;color:#eff8ff;cursor:pointer; }
+    .history-item { width:100%;display:block;text-align:start;padding:10px 14px;border:1px solid transparent;border-radius:999px;background:transparent;color:#eff8ff;cursor:pointer; }
     .history-item:active,.history-item:hover { background:rgba(0,166,228,.10);border-color:rgba(0,166,228,.14); }
     .history-item strong { display:block;font-size:.83rem;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
     .history-item small { display:block;margin-top:3px;color:#91a9bf;font-size:.7rem; }
     .history-empty { padding:14px;color:#91a9bf;font-size:.8rem;text-align:center; }
+
     .action-menu {
-      position:absolute;top:53px;right:0;width:204px;padding:6px;
-      border:1px solid rgba(165,211,255,.22);border-radius:17px;
+      position:absolute; top:0; right:0; width:204px; padding:6px;
+      border:1px solid rgba(165,211,255,.22);border-radius:22px;
       background:rgba(5,16,39,.90);-webkit-backdrop-filter:blur(28px) saturate(145%);backdrop-filter:blur(28px) saturate(145%);
       box-shadow:0 16px 44px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.10);
-      transform-origin:top right;animation:menuIn .16s ease both;
+      transform-origin: top right;
+      z-index: 50;
     }
-    @keyframes menuIn { from{opacity:0;transform:translateY(-5px) scale(.97)} to{opacity:1;transform:none} }
-    .menu-item { width:100%;display:flex;align-items:center;gap:11px;min-height:45px;padding:0 11px;border:0;border-radius:11px;background:transparent;color:#edf7ff;text-align:start;font-size:.86rem;cursor:pointer; }
+    .action-menu.is-opening {
+      animation: menuMorph .42s cubic-bezier(.2,.8,.2,1) .08s both;
+    }
+    @keyframes menuMorph {
+      0%   { transform: scale(.2);  border-radius: 50%; opacity: 0; }
+      35%  { opacity: 1; }
+      100% { transform: scale(1);  border-radius: 22px; opacity: 1; }
+    }
+
+    /* Menu items: fully pill-shaped */
+    .menu-item {
+      width:100%;display:flex;align-items:center;gap:11px;min-height:44px;padding:0 15px;
+      border:0;border-radius:999px;background:transparent;color:#edf7ff;text-align:start;
+      font-size:.86rem;cursor:pointer; outline: none;
+    }
     .menu-item:active,.menu-item:hover { background:rgba(0,166,228,.12); }
     .menu-item .icon { width:18px;height:18px;color:#78d6ff; }
-    .menu-divider { height:1px;margin:4px 8px;background:rgba(165,211,255,.12); }
+    .menu-divider { height:1px;margin:4px 12px;background:rgba(165,211,255,.12); }
     .note { opacity:.68; }
-    @media (max-width:560px) { .chat{padding:66px 11px 10px}.composer{padding-inline:11px}.card{padding:13px} }
-    @media (min-width:640px) { .chat{padding:70px 22px 14px} }
-    @media (max-width:560px) { .heads,.cols{grid-template-columns:1fr}.card{padding:13px}.brand-cap{display:none} }
-    @media (prefers-reduced-motion:reduce) { *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important} }
-
 
     /* ---- Newniom AI / refined Apple-inspired cosmic interface ---- */
     :root {
@@ -344,7 +358,6 @@
       50% { transform: translate3d(1.2%,-1%,0) scale(1.055); }
       100% { transform: translate3d(-.5%,-1.8%,0) scale(1.025); }
     }
-    /* Keep every interface icon neutral and consistent. */
     .icon, .menu-item .icon, .list .icon, .verdict-icon, .orb, .thumb {
       color: #E7EDF6;
     }
@@ -376,14 +389,13 @@
       backdrop-filter: blur(30px) saturate(135%);
       box-shadow: 0 18px 55px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.10);
     }
-    .menu-item { border-radius: 14px; color: #E9EEF6; transition: background .18s ease, transform .18s ease; }
+    .menu-item { border-radius: 999px; color: #E9EEF6; transition: background .18s ease, transform .18s ease; }
     .menu-item .icon { color: #DCE5F1; }
     .menu-item:active { transform: scale(.975); background: rgba(255,255,255,.09); }
     .menu-divider { background: rgba(230,240,255,.10); }
-    .history-item { border-radius: 15px; }
+    .history-item { border-radius: 999px; }
     .history-item:active, .history-item:hover { background: rgba(255,255,255,.075); border-color: rgba(255,255,255,.08); }
 
-    /* AI responses are typography, not cards. User messages remain glass bubbles. */
     .msg { animation: messageArrive .48s cubic-bezier(.18,.78,.24,1) both; }
     @keyframes messageArrive {
       from { opacity: 0; transform: translateY(13px) scale(.985); filter: blur(5px); }
@@ -433,7 +445,6 @@
       0%,100% { opacity:.38; transform:translateY(2px) scale(.82); }
       50% { opacity:1; transform:translateY(-4px) scale(1.18); }
     }
-    /* The thinking state becomes a clearly visible, moving brand-colour aurora. */
     .thinking-aura {
       position: fixed;
       z-index: -1;
@@ -468,45 +479,128 @@
     .head { border-radius: 19px; }
     details.more { border-radius: 18px; }
     .verdict { border-radius: 22px; }
+
+    /* ============================================================
+       Floating composer — pill sits OVER the chat, text scrolls under
+       ============================================================ */
     .composer {
-      background: linear-gradient(to top, rgba(3,8,23,.88) 65%, rgba(3,8,23,.12));
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 20;
+      padding: 6px 13px calc(10px + env(safe-area-inset-bottom, 0px));
+      background: transparent;
+      pointer-events: none;
     }
+    .chips, .compose, .note { pointer-events: auto; }
+
     .compose {
-      padding: 6px 7px 6px 16px;
-      border-radius: 25px;
+      padding: 5px 5px 5px 16px;
+      border-radius: 24px;
       border: 1px solid rgba(226,238,255,.19);
-      background: rgba(14,22,40,.64);
-      -webkit-backdrop-filter: blur(25px) saturate(135%);
-      backdrop-filter: blur(25px) saturate(135%);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.10), 0 9px 28px rgba(0,0,0,.20);
-      transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
-    }
-    .compose:focus-within {
-      border-color: rgba(0,166,228,.62);
-      background: rgba(12,25,48,.78);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 0 0 3px rgba(0,166,228,.10), 0 10px 30px rgba(0,0,0,.22);
-    }
-    .send {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #00A6E4;
-      color: #fff;
-      box-shadow: 0 4px 14px rgba(0,166,228,.28), inset 0 1px 0 rgba(255,255,255,.22);
-      transition: transform .2s cubic-bezier(.2,.8,.2,1), background .2s ease, box-shadow .2s ease;
-    }
-    .send:hover { background: #149FE0; box-shadow: 0 6px 20px rgba(0,166,228,.38); }
-    .send:active { transform: scale(.88); }
-    .send .icon { color: #fff; }
-    .chip { border-radius: 18px; background: rgba(16,25,44,.58); border-color: rgba(225,238,255,.15); color: #E9EEF6; }
-    .chip:active { transform: scale(.96); background: rgba(255,255,255,.12); }
-    .icon-btn, .copy-btn, .retry { border-radius: 18px; }
-    button { transition-timing-function: cubic-bezier(.2,.8,.2,1); }
-    button:active { transition-duration: .1s; }
-    @media (prefers-reduced-motion: reduce) {
-      body::before, body.is-thinking .thinking-aura, .msg, .typing i { animation: none !important; }
+      background: rgba(14,22,40,.62);
+      -webkit-backdrop-filter: blur(26px) saturate(150%);
+      backdrop-filter: blur(26px) saturate(150%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.10), 0 9px 28px rgba(0,0,0,.22);
+      align-items: flex-end;
+      gap: 8px;
+      transition: none;
     }
 
+    .compose textarea {
+      padding: 9px 0;
+      font-size: 16px;
+      line-height: 1.4;
+      outline: none;
+      box-shadow: none;
+    }
+    .compose textarea:focus,
+    .compose textarea:focus-visible {
+      outline: none;
+      box-shadow: none;
+    }
+
+    /* Send button: solid #3566F0, no shadow, bigger up-arrow */
+    .send {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #3566F0;
+      color: #fff;
+      box-shadow: none;
+      flex: 0 0 auto;
+      transition: transform .2s cubic-bezier(.2,.8,.2,1), background .2s ease;
+    }
+    .send:hover { background: #2D5AE0; box-shadow: none; }
+    .send:active { transform: scale(.88); }
+    .send:disabled { opacity: .45; cursor: not-allowed; }
+    .send .icon { color: #fff; width: 22px; height: 22px; stroke-width: 2; }
+
+    /* Chips: full pill */
+    .chip {
+      border-radius: 999px;
+      background: rgba(16,25,44,.58);
+      border-color: rgba(225,238,255,.15);
+      color: #E9EEF6;
+      padding: 8px 16px;
+    }
+    .chip:active { transform: scale(.96); background: rgba(255,255,255,.12); }
+
+    .icon-btn, .copy-btn, .retry { border-radius: 18px; }
+
+    /* Note much more subtle */
+    .note {
+      margin: 6px 4px 0;
+      font-size: .6rem;
+      opacity: .5;
+      line-height: 1.4;
+    }
+
+    button { transition-timing-function: cubic-bezier(.2,.8,.2,1); }
+    button:active { transition-duration: .1s; }
+
+    /* No blue focus ring on buttons (as requested) */
+    button:focus,
+    button:focus-visible,
+    .menu-trigger:focus,
+    .menu-trigger:focus-visible,
+    .menu-item:focus,
+    .menu-item:focus-visible,
+    .send:focus,
+    .send:focus-visible,
+    .chip:focus,
+    .chip:focus-visible,
+    .copy-btn:focus,
+    .copy-btn:focus-visible,
+    .retry:focus,
+    .retry:focus-visible,
+    .history-item:focus,
+    .history-item:focus-visible,
+    .history-close:focus,
+    .history-close:focus-visible {
+      outline: none;
+      box-shadow: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before, body.is-thinking .thinking-aura, .msg, .typing i,
+      .menu-trigger.is-morphing .dots, .action-menu.is-opening { animation: none !important; }
+    }
+
+    @media (max-width:560px) {
+      .composer { padding-inline: 11px; }
+      .chat { padding: 66px 11px 10px; }
+      .card { padding: 13px; }
+      .heads, .cols { grid-template-columns: 1fr; }
+      .brand-cap { display: none; }
+    }
+    @media (min-width:640px) {
+      .chat { padding: 70px 22px 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    }
   </style>
 </head>
 <body>
@@ -533,12 +627,12 @@
         <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
       </button>
       <section class="action-menu" id="actionMenu" hidden>
-        <button class="menu-item" id="newChat" type="button"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg><span data-i18n="newChat">New chat</span></button>
+        <button class="menu-item" id="newChat" type="button"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg><span>New chat</span></button>
         <div class="menu-divider"></div>
-        <button class="menu-item" id="historyToggle" type="button" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span data-i18n="historyTitle">Recent chats</span></button>
+        <button class="menu-item" id="historyToggle" type="button" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span>Recent chats</span></button>
       </section>
       <section class="history-panel" id="historyPanel" hidden>
-        <div class="history-head"><span data-i18n="historyTitle">Recent chats</span><button class="history-close" id="historyClose" type="button" aria-label="Close">×</button></div>
+        <div class="history-head"><span>Recent chats</span><button class="history-close" id="historyClose" type="button" aria-label="Close">×</button></div>
         <div class="history-list" id="historyList"></div>
       </section>
     </div>
@@ -547,14 +641,14 @@
       <div class="stream" id="stream" role="log" aria-live="polite" aria-relevant="additions"></div>
     </main>
 
-    <footer class="composer">
+    <footer class="composer" id="composer">
       <div class="chips" id="chips"></div>
       <form class="compose" id="form" autocomplete="off">
-        <label class="sr" for="input" data-i18n="placeholder">Ask me to compare two devices…</label>
-        <textarea id="input" rows="1" maxlength="500" data-i18n-ph="placeholder" placeholder="Ask me to compare two devices…" dir="auto" enterkeyhint="send"></textarea>
-        <button class="send" id="send" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg><span class="sr" data-i18n="send">Send</span></button>
+        <label class="sr" for="input">Ask me to compare two devices</label>
+        <textarea id="input" rows="1" maxlength="500" placeholder="Ask me" dir="auto" enterkeyhint="send"></textarea>
+        <button class="send" id="send" type="submit" aria-label="Send"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg></button>
       </form>
-      <p class="note"><span data-i18n="note">newniom ai can make mistakes. Check specs and prices before you buy.</span> · <a href="https://newniom.github.io/Newniom/" target="_blank" rel="noopener noreferrer" data-i18n="built">Built by Newniom</a></p>
+      <p class="note">newniom ai can make mistakes. Check specs and prices before you buy. · <a href="https://newniom.github.io/Newniom/" target="_blank" rel="noopener noreferrer">Built by Newniom</a></p>
     </footer>
   </div>
 
@@ -568,7 +662,6 @@
     const WORKER_URL = 'https://newniom-compare.newniom-com.workers.dev';
 
     const MAX_CHARS = 500;
-    const STORE_KEY = 'newniom-ai-lang';
     const HISTORY_KEY = 'newniom-ai-history-v1';
     const NS = 'http://www.w3.org/2000/svg';
     const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -580,9 +673,6 @@
 
     const I18N = {
       en: {
-        brandCap: 'Device comparison assistant', newChat: 'New chat', historyTitle: 'Recent chats',
-        placeholder: 'Ask me to compare two devices…', send: 'Send',
-        note: 'newniom ai can make mistakes. Check specs and prices before you buy.', built: 'Built by Newniom',
         welcome: "I'm newniom ai, an AI built by Newniom. I compare phones, laptops, tablets and computers — tell me two devices you're torn between and I'll break it down. What are we comparing?",
         cmpText: 'Compare {a} and {b}',
         follow: ['Which is better for gaming?', 'Which has the better camera?', 'Which one lasts longer?'],
@@ -598,27 +688,7 @@
         copy: 'Copy summary', copied: 'Copied', copyFail: 'Copy failed', none: '—',
         m: { performance: 'Performance', display: 'Display', camera: 'Camera', battery: 'Battery', portability: 'Portability', value: 'Value' },
         s: { screen: 'Screen', processor: 'Processor', ram: 'RAM', storage: 'Storage', camera: 'Camera', battery: 'Battery', os: 'OS', weight: 'Weight' },
-      },
-      fa: {
-        brandCap: 'دستیار مقایسه‌ی دستگاه', newChat: 'گفتگوی جدید', historyTitle: 'گفتگوهای اخیر',
-        placeholder: 'از من بخواه دو دستگاه را مقایسه کنم…', send: 'ارسال',
-        note: 'newniom ai ممکن است اشتباه کند. پیش از خرید مشخصات و قیمت را بررسی کن.', built: 'ساخته‌ی Newniom',
-        welcome: 'من هوش مصنوعی newniom ai هستم. گوشی، لپ‌تاپ، تبلت و کامپیوتر مقایسه می‌کنم؛ دو دستگاهی که بینشان مردد هستی را بگو تا برایت بررسی کنم. چی را مقایسه کنیم؟',
-        cmpText: '{a} را با {b} مقایسه کن',
-        follow: ['برای گیمینگ کدام بهتر است؟', 'دوربین کدام بهتر است؟', 'کدام بادوام‌تر است؟'],
-        errNetwork: 'به سرور وصل نشدم. اینترنتت را بررسی کن و دوباره تلاش کن.',
-        errTimeout: 'خیلی طول کشید. دوباره تلاش کن.',
-        errRate: 'پیام‌ها زیاد بود. یک دقیقه صبر کن و دوباره تلاش کن.',
-        errQuota: 'سهمیه‌ی رایگان امروز تمام شده است. بعداً دوباره تلاش کن.',
-        errBad: 'نتوانستم پیامت را بخوانم. کمی بازنویسی‌اش کن.',
-        errServer: 'مشکلی از سمت من پیش آمد. دوباره تلاش کن.',
-        retry: 'تلاش دوباره',
-        scores: 'امتیازها', specs: 'مشخصات فنی', advantages: 'برتری‌ها', bestFor: 'مناسب برای', prosCons: 'مزایا و معایب',
-        verdict: 'نتیجه‌ی نهایی', spec: 'مشخصه', winner: 'برنده', tie: 'مساوی', over: '{x} نسبت به {y}',
-        copy: 'کپی خلاصه', copied: 'کپی شد', copyFail: 'کپی نشد', none: '—',
-        m: { performance: 'عملکرد', display: 'نمایشگر', camera: 'دوربین', battery: 'باتری', portability: 'قابلیت حمل', value: 'ارزش خرید' },
-        s: { screen: 'صفحه‌نمایش', processor: 'پردازنده', ram: 'رم', storage: 'حافظه', camera: 'دوربین', battery: 'باتری', os: 'سیستم‌عامل', weight: 'وزن' },
-      },
+      }
     };
     const STARTERS = [['iPhone 16', 'Galaxy S25'], ['MacBook Air M3', 'Dell XPS 13'], ['iPad Air', 'Galaxy Tab S9']];
     const METRICS = ['performance', 'display', 'camera', 'battery', 'portability', 'value'];
@@ -626,20 +696,23 @@
     const SPEC_SCORE = { screen: 'display', processor: 'performance', ram: 'performance', camera: 'camera', battery: 'battery', weight: 'portability' };
 
     const $ = (id) => document.getElementById(id);
-    const el = { chat: $('chat'), stream: $('stream'), chips: $('chips'), form: $('form'), input: $('input'), send: $('send'), newChat: $('newChat'), menuToggle: $('menuToggle'), actionMenu: $('actionMenu'), historyToggle: $('historyToggle'), historyPanel: $('historyPanel'), historyList: $('historyList'), historyClose: $('historyClose') };
+    const el = {
+      chat: $('chat'), stream: $('stream'), chips: $('chips'), form: $('form'),
+      input: $('input'), send: $('send'), newChat: $('newChat'), menuToggle: $('menuToggle'),
+      actionMenu: $('actionMenu'), historyToggle: $('historyToggle'), historyPanel: $('historyPanel'),
+      historyList: $('historyList'), historyClose: $('historyClose'), composer: $('composer')
+    };
 
-    let lang = 'en';
-    try { const s = localStorage.getItem(STORE_KEY); if (s === 'en' || s === 'fa') lang = s; } catch (e) {}
+    const L = 'en';
     const history = [];       // compact context sent to the Worker
-    let chatLog = [];        // visible conversation, cached on this device
+    let chatLog = [];         // visible conversation, cached on this device
     let savedChats = [];
     let currentChatId = String(Date.now());
     try { const cached = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]'); if (Array.isArray(cached)) savedChats = cached.slice(0,30); } catch (e) {}
     let busy = false;
     let session = 0;          // bumps on "New chat" so stale replies are ignored
 
-    const tr = (L, k) => I18N[L][k];
-    const t = (k) => tr(lang, k);
+    const t = (k) => I18N[L][k];
 
     /* ---------- tiny DOM helpers (all text goes through textContent) ---------- */
     const h = (tag, cls, txt) => {
@@ -660,16 +733,28 @@
     };
     const known = (v) => v !== undefined && v !== null && String(v).trim() !== '' && String(v).toLowerCase() !== 'unknown';
     const num = (v) => { const n = typeof v === 'string' ? parseFloat(v) : v; return typeof n === 'number' && isFinite(n) ? Math.max(0, Math.min(10, n)) : null; };
-    const fmt = (L, n) => (n === null ? tr(L, 'none') : String(Math.round(n * 10) / 10));
+    const fmt = (n) => (n === null ? t('none') : String(Math.round(n * 10) / 10));
     const nearBottom = () => el.chat.scrollHeight - el.chat.scrollTop - el.chat.clientHeight < 140;
     const toBottom = () => { el.chat.scrollTo({ top: el.chat.scrollHeight, behavior: reduceMotion ? 'auto' : 'smooth' }); };
+
+    /* ---------- chat bottom padding = composer height ---------- */
+    function syncChatPadding() {
+      if (!el.composer) return;
+      const h = el.composer.offsetHeight + 16;
+      el.chat.style.paddingBottom = h + 'px';
+    }
+    if ('ResizeObserver' in window && el.composer) {
+      new ResizeObserver(syncChatPadding).observe(el.composer);
+    }
+    window.addEventListener('resize', syncChatPadding);
+    requestAnimationFrame(syncChatPadding);
 
     /* ---------- local chat history ---------- */
     function persistChat() {
       if (!chatLog.length) return;
       const first = chatLog.find(x => x.role === 'user');
-      const title = first ? String(first.content).slice(0,54) : (lang === 'fa' ? 'گفتگوی جدید' : 'New chat');
-      const item = { id: currentChatId, title, updated: Date.now(), lang, messages: chatLog.slice(-80) };
+      const title = first ? String(first.content).slice(0,54) : 'New chat';
+      const item = { id: currentChatId, title, updated: Date.now(), messages: chatLog.slice(-80) };
       savedChats = [item, ...savedChats.filter(x => x.id !== currentChatId)].slice(0,30);
       try { localStorage.setItem(HISTORY_KEY, JSON.stringify(savedChats)); } catch (e) {}
       renderHistory();
@@ -678,7 +763,7 @@
       if (!el.historyList) return;
       el.historyList.replaceChildren();
       if (!savedChats.length) {
-        el.historyList.append(h('div','history-empty',lang === 'fa' ? 'هنوز گفتگویی ذخیره نشده است' : 'No saved conversations yet'));
+        el.historyList.append(h('div','history-empty','No saved conversations yet'));
         return;
       }
       savedChats.forEach(item => {
@@ -686,7 +771,7 @@
         b.type = 'button';
         b.append(h('strong','',item.title || 'New chat'));
         const date = new Date(item.updated || Date.now());
-        b.append(h('small','',date.toLocaleString(lang === 'fa' ? 'fa-IR' : 'en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})));
+        b.append(h('small','',date.toLocaleString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})));
         b.addEventListener('click', () => loadChat(item.id));
         el.historyList.append(b);
       });
@@ -695,15 +780,15 @@
       const item = savedChats.find(x => x.id === id);
       if (!item) return;
       session++; busy = false; document.body.classList.remove('is-thinking'); el.send.disabled = false;
-      currentChatId = item.id; lang = item.lang === 'fa' ? 'fa' : 'en';
+      currentChatId = item.id;
       history.length = 0; chatLog = Array.isArray(item.messages) ? item.messages.slice() : [];
-      applyChrome(); el.stream.replaceChildren(); hideChips();
+      el.stream.replaceChildren(); hideChips();
       const apiHistory = [];
       for (const msg of chatLog) {
         if (msg.role === 'user') { addUser(msg.content); apiHistory.push({role:'user',content:msg.content}); }
         else if (msg.role === 'assistant') {
           apiHistory.push({role:'assistant',content:msg.comparison ? compact({reply:msg.content,comparison:msg.comparison}) : msg.content});
-          await addBot(msg.content, msg.lang || lang, msg.comparison ? (body) => body.append(buildCard(msg.comparison,msg.lang || lang)) : null);
+          await addBot(msg.content, msg.comparison ? (body) => body.append(buildCard(msg.comparison)) : null);
         }
       }
       history.push(...apiHistory.slice(-10));
@@ -711,10 +796,24 @@
       el.historyPanel.hidden = true; el.historyToggle.setAttribute('aria-expanded','false'); toggleMenu(false);
       toBottom();
     }
+
+    /* ---------- iOS-style morphing menu ---------- */
     function toggleMenu(force) {
       const open = typeof force === 'boolean' ? force : el.actionMenu.hidden;
-      el.actionMenu.hidden = !open;
       el.menuToggle.setAttribute('aria-expanded', String(open));
+      if (open) {
+        el.actionMenu.hidden = false;
+        el.actionMenu.classList.remove('is-opening');
+        void el.actionMenu.offsetWidth;
+        el.actionMenu.classList.add('is-opening');
+        el.menuToggle.classList.remove('is-morphing');
+        void el.menuToggle.offsetWidth;
+        el.menuToggle.classList.add('is-morphing');
+      } else {
+        el.actionMenu.hidden = true;
+        el.actionMenu.classList.remove('is-opening');
+        el.menuToggle.classList.remove('is-morphing');
+      }
     }
     function toggleHistory(force) {
       const open = typeof force === 'boolean' ? force : el.historyPanel.hidden;
@@ -723,34 +822,14 @@
       if (open) renderHistory();
     }
 
-    /* ---------- language / chrome ---------- */
-    function applyChrome() {
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
-      document.querySelectorAll('[data-i18n]').forEach((n) => { n.textContent = t(n.getAttribute('data-i18n')); });
-      document.querySelectorAll('[data-i18n-ph]').forEach((n) => n.setAttribute('placeholder', t(n.getAttribute('data-i18n-ph'))));
-      document.querySelectorAll('[data-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang)));
-    }
-    document.querySelectorAll('[data-lang]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const next = btn.getAttribute('data-lang');
-        if (next === lang) return;
-        lang = next;
-        try { localStorage.setItem(STORE_KEY, lang); } catch (e) {}
-        applyChrome();
-        if (!history.length) resetChat(); else if (el.chips.children.length) showChips(chipMode);
-      });
-    });
-
     /* ---------- chips ---------- */
     let chipMode = 'start';
-    function showChips(mode, L) {
+    function showChips(mode) {
       chipMode = mode;
-      const CL = L || lang;
       el.chips.replaceChildren();
       const items = mode === 'start'
-        ? STARTERS.map(([a, b]) => ({ label: a + ' vs ' + b, text: tr(lang, 'cmpText').replace('{a}', a).replace('{b}', b) }))
-        : tr(CL, 'follow').map((x) => ({ label: x, text: x }));
+        ? STARTERS.map(([a, b]) => ({ label: a + ' vs ' + b, text: t('cmpText').replace('{a}', a).replace('{b}', b) }))
+        : t('follow').map((x) => ({ label: x, text: x }));
       items.forEach((it) => {
         const b = h('button', 'chip', it.label);
         b.type = 'button';
@@ -802,7 +881,7 @@
       });
     }
 
-    async function addBot(text, L, extraBuilder) {
+    async function addBot(text, extraBuilder) {
       const { m, body } = botShell();
       const bubble = h('div', 'bubble');
       bubble.setAttribute('dir', 'auto');
@@ -841,7 +920,7 @@
         res = await fetch(WORKER_URL.replace(/\/+$/, '') + '/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ lang, messages }),
+          body: JSON.stringify({ lang: L, messages }),
           signal: ctrl.signal,
         });
       } catch (e) {
@@ -859,7 +938,7 @@
       if (c) {
         const [A, B] = c.devices;
         const w = c.verdict.winner === 'a' ? A.name : c.verdict.winner === 'b' ? B.name : 'tie';
-        const sc = METRICS.map((k) => k + ' ' + fmt('en', num(A.scores[k])) + '/' + fmt('en', num(B.scores[k]))).join(', ');
+        const sc = METRICS.map((k) => k + ' ' + fmt(num(A.scores[k])) + '/' + fmt(num(B.scores[k]))).join(', ');
         s += '\n[comparison card shown: ' + A.name + ' vs ' + B.name + '; winner: ' + w + '; scores ' + sc + ']';
       }
       return s.slice(0, 850);
@@ -875,6 +954,7 @@
       persistChat();
       el.input.value = '';
       autosize();
+      syncChatPadding();
       ask();
     }
 
@@ -886,24 +966,24 @@
         const data = await callChat(history.slice(-10));
         if (mine !== session) return;
         typing.remove();
-        const L = data.lang === 'fa' ? 'fa' : 'en';
         history.push({ role: 'assistant', content: compact(data) });
-        chatLog.push({ role:'assistant', content:data.reply, comparison:data.comparison || null, lang:L });
+        chatLog.push({ role:'assistant', content:data.reply, comparison:data.comparison || null });
         persistChat();
-        await addBot(data.reply, L, data.comparison ? (body, m) => {
-          const card = buildCard(data.comparison, L);
+        await addBot(data.reply, data.comparison ? (body, m) => {
+          const card = buildCard(data.comparison);
           body.append(card);
           animateBars(card);
-          showChips('follow', L);
+          showChips('follow');
           if (!reduceMotion) m.scrollIntoView({ block: 'start', behavior: 'smooth' }); else m.scrollIntoView({ block: 'start' });
         } : null);
-        if (!data.comparison && history.some((x) => x.content.indexOf('[comparison card shown') !== -1)) showChips('follow', L);
+        if (!data.comparison && history.some((x) => x.content.indexOf('[comparison card shown') !== -1)) showChips('follow');
       } catch (err) {
         if (mine !== session) return;
         typing.remove();
         addError(err && err.code);
       } finally {
         if (mine === session) { busy = false; document.body.classList.remove('is-thinking'); el.send.disabled = false; if (!coarse) el.input.focus(); }
+        syncChatPadding();
       }
     }
 
@@ -934,21 +1014,21 @@
     }
 
     /* ---------- comparison card ---------- */
-    function list(L, items, iconId, cls) {
+    function list(items, iconId, cls) {
       const arr = Array.isArray(items) ? items.filter(Boolean) : [];
-      if (!arr.length) return auto(h('p', 'empty', tr(L, 'none')));
+      if (!arr.length) return auto(h('p', 'empty', t('none')));
       const ul = h('ul', 'list');
       arr.forEach((s) => { const li = h('li'); li.append(ico(iconId, 'icon-sm ' + cls), auto(h('span', '', s))); ul.append(li); });
       return ul;
     }
 
-    function headCard(L, d, letter, c) {
+    function headCard(d, letter, c) {
       const box = h('div', 'head');
       const th = h('div', 'thumb'); th.append(ico(iconFor(d, c.category), 'icon-lg'));
       const body = h('div');
       const row = h('div', 'badge-row');
       row.append(h('span', 'badge', letter.toUpperCase()));
-      if (c.verdict.winner === letter) { const w = h('span', 'win-chip'); w.append(ico('i-trophy', 'icon-sm'), h('span', '', tr(L, 'winner'))); row.append(w); }
+      if (c.verdict.winner === letter) { const w = h('span', 'win-chip'); w.append(ico('i-trophy', 'icon-sm'), h('span', '', t('winner'))); row.append(w); }
       body.append(row, auto(h('h4', 'name', d.name)));
       const meta = [d.brand, d.year].filter(known).join(' · ');
       if (meta) body.append(auto(h('p', 'meta', meta)));
@@ -964,19 +1044,19 @@
       return box;
     }
 
-    function buildCard(c, L) {
+    function buildCard(c) {
       const [A, B] = c.devices;
       const card = h('section', 'card');
-      card.setAttribute('dir', L === 'fa' ? 'rtl' : 'ltr');
+      card.setAttribute('dir', 'ltr');
       card.lang = L;
 
       const heads = h('div', 'heads');
-      heads.append(headCard(L, A, 'a', c), headCard(L, B, 'b', c));
+      heads.append(headCard(A, 'a', c), headCard(B, 'b', c));
       card.append(heads);
 
       // scores
       const sc = h('div', 'sec');
-      sc.append(h('h5', 'sec-title', tr(L, 'scores')));
+      sc.append(h('h5', 'sec-title', t('scores')));
       const legend = h('div', 'legend');
       legend.append(auto(h('span', '', A.name)), auto(h('span', '', B.name)));
       sc.append(legend);
@@ -985,14 +1065,14 @@
         const aw = a !== null && b !== null && a > b, bw = a !== null && b !== null && b > a;
         const row = h('div', 'row');
         row.setAttribute('role', 'group');
-        row.setAttribute('aria-label', tr(L, 'm')[k] + ': ' + A.name + ' ' + fmt(L, a) + ', ' + B.name + ' ' + fmt(L, b));
-        row.append(h('div', 'row-label', tr(L, 'm')[k]));
+        row.setAttribute('aria-label', t('m')[k] + ': ' + A.name + ' ' + fmt(a) + ', ' + B.name + ' ' + fmt(b));
+        row.append(h('div', 'row-label', t('m')[k]));
         const bars = h('div', 'bars');
         const ta = h('div', 'track ta'), tb = h('div', 'track tb');
         const fa = h('div', 'fill' + (aw ? ' win' : '')), fb = h('div', 'fill' + (bw ? ' win' : ''));
         fa.dataset.w = a === null ? 0 : a * 10; fb.dataset.w = b === null ? 0 : b * 10;
         ta.append(fa); tb.append(fb);
-        bars.append(h('span', 'num' + (aw ? ' win' : ''), fmt(L, a)), ta, tb, h('span', 'num' + (bw ? ' win' : ''), fmt(L, b)));
+        bars.append(h('span', 'num' + (aw ? ' win' : ''), fmt(a)), ta, tb, h('span', 'num' + (bw ? ' win' : ''), fmt(b)));
         row.append(bars);
         sc.append(row);
       });
@@ -1000,22 +1080,22 @@
 
       // advantages
       const adv = h('div', 'sec');
-      adv.append(h('h5', 'sec-title', tr(L, 'advantages')));
+      adv.append(h('h5', 'sec-title', t('advantages')));
       const cols = h('div', 'cols');
       const c1 = h('div'), c2 = h('div');
-      c1.append(auto(h('h5', 'col-title', tr(L, 'over').replace('{x}', A.name).replace('{y}', B.name))), list(L, c.advantages && c.advantages.a_over_b, 'i-check', 'ok'));
-      c2.append(auto(h('h5', 'col-title', tr(L, 'over').replace('{x}', B.name).replace('{y}', A.name))), list(L, c.advantages && c.advantages.b_over_a, 'i-check', 'ok'));
+      c1.append(auto(h('h5', 'col-title', t('over').replace('{x}', A.name).replace('{y}', B.name))), list(c.advantages && c.advantages.a_over_b, 'i-check', 'ok'));
+      c2.append(auto(h('h5', 'col-title', t('over').replace('{x}', B.name).replace('{y}', A.name))), list(c.advantages && c.advantages.b_over_a, 'i-check', 'ok'));
       cols.append(c1, c2);
       adv.append(cols);
       card.append(adv);
 
       // best for
       const best = h('div', 'sec');
-      best.append(h('h5', 'sec-title', tr(L, 'bestFor')));
+      best.append(h('h5', 'sec-title', t('bestFor')));
       const bc = h('div', 'cols');
       [[A, 'a'], [B, 'b']].forEach(([d, k]) => {
         const x = h('div', 'best');
-        x.append(auto(h('strong', '', d.name)), auto(h('span', '', (c.best_for && c.best_for[k]) || tr(L, 'none'))));
+        x.append(auto(h('strong', '', d.name)), auto(h('span', '', (c.best_for && c.best_for[k]) || t('none'))));
         bc.append(x);
       });
       best.append(bc);
@@ -1023,20 +1103,20 @@
 
       // specs
       const dSpecs = h('details', 'more');
-      dSpecs.append(h('summary', '', tr(L, 'specs')));
+      dSpecs.append(h('summary', '', t('specs')));
       const inner = h('div', 'inner');
       const wrap = h('div', 'table-wrap'); wrap.tabIndex = 0;
-      wrap.setAttribute('role', 'region'); wrap.setAttribute('aria-label', tr(L, 'specs'));
+      wrap.setAttribute('role', 'region'); wrap.setAttribute('aria-label', t('specs'));
       const table = h('table');
       const thead = h('thead'), hr = h('tr');
-      [tr(L, 'spec'), A.name, B.name].forEach((x) => { const th = auto(h('th', '', x)); th.scope = 'col'; hr.append(th); });
+      [t('spec'), A.name, B.name].forEach((x) => { const th = auto(h('th', '', x)); th.scope = 'col'; hr.append(th); });
       thead.append(hr);
       const tbody = h('tbody');
       SPECS.forEach((k) => {
         const tr1 = h('tr');
-        const th = h('th', '', tr(L, 's')[k]); th.scope = 'row';
+        const th = h('th', '', t('s')[k]); th.scope = 'row';
         const va = A.specs && A.specs[k], vb = B.specs && B.specs[k];
-        const ca = auto(h('td', '', known(va) ? va : tr(L, 'none'))), cb = auto(h('td', '', known(vb) ? vb : tr(L, 'none')));
+        const ca = auto(h('td', '', known(va) ? va : t('none'))), cb = auto(h('td', '', known(vb) ? vb : t('none')));
         const sk = SPEC_SCORE[k];
         if (sk) {
           const a = num(A.scores && A.scores[sk]), b = num(B.scores && B.scores[sk]);
@@ -1056,14 +1136,14 @@
 
       // pros & cons
       const dPc = h('details', 'more');
-      dPc.append(h('summary', '', tr(L, 'prosCons')));
+      dPc.append(h('summary', '', t('prosCons')));
       const inner2 = h('div', 'inner');
       const pc = h('div', 'cols');
       [A, B].forEach((d) => {
         const x = h('div');
-        x.append(auto(h('h5', 'col-title', d.name)), list(L, d.pros, 'i-check', 'ok'));
+        x.append(auto(h('h5', 'col-title', d.name)), list(d.pros, 'i-check', 'ok'));
         const cons = (d.cons || []).filter(Boolean);
-        if (cons.length) { const sp = h('div'); sp.style.height = '8px'; x.append(sp, list(L, cons, 'i-x', 'no')); }
+        if (cons.length) { const sp = h('div'); sp.style.height = '8px'; x.append(sp, list(cons, 'i-x', 'no')); }
         pc.append(x);
       });
       inner2.append(pc);
@@ -1075,8 +1155,8 @@
       const top = h('div', 'verdict-top');
       const vi = h('span', 'verdict-icon'); vi.append(ico('i-trophy', 'icon-lg'));
       const vt = h('div');
-      const winName = c.verdict.winner === 'a' ? A.name : c.verdict.winner === 'b' ? B.name : tr(L, 'tie');
-      vt.append(h('p', 'verdict-kicker', tr(L, 'verdict')), auto(h('p', 'verdict-name', winName)));
+      const winName = c.verdict.winner === 'a' ? A.name : c.verdict.winner === 'b' ? B.name : t('tie');
+      vt.append(h('p', 'verdict-kicker', t('verdict')), auto(h('p', 'verdict-name', winName)));
       top.append(vi, vt);
       v.append(top);
       if (c.verdict.reason) v.append(auto(h('p', 'verdict-reason', c.verdict.reason)));
@@ -1084,12 +1164,12 @@
       if (c.disclaimer) foot.append(auto(h('p', 'disclaimer', c.disclaimer)));
       const cp = h('button', 'copy-btn');
       cp.type = 'button';
-      const cpLabel = h('span', '', tr(L, 'copy'));
+      const cpLabel = h('span', '', t('copy'));
       cp.append(ico('i-copy', 'icon-sm'), cpLabel);
       cp.addEventListener('click', async () => {
-        const ok = await copyText(summaryText(c, L));
-        cpLabel.textContent = tr(L, ok ? 'copied' : 'copyFail');
-        setTimeout(() => { cpLabel.textContent = tr(L, 'copy'); }, 2000);
+        const ok = await copyText(summaryText(c));
+        cpLabel.textContent = ok ? t('copied') : t('copyFail');
+        setTimeout(() => { cpLabel.textContent = t('copy'); }, 2000);
       });
       foot.append(cp);
       v.append(foot);
@@ -1102,13 +1182,13 @@
       requestAnimationFrame(() => requestAnimationFrame(() => fills.forEach((f) => { f.style.width = f.dataset.w + '%'; })));
     }
 
-    function summaryText(c, L) {
+    function summaryText(c) {
       const [A, B] = c.devices;
-      const w = c.verdict.winner === 'a' ? A.name : c.verdict.winner === 'b' ? B.name : tr(L, 'tie');
-      const lines = ['newniom ai — ' + A.name + ' vs ' + B.name, tr(L, 'winner') + ': ' + w];
+      const w = c.verdict.winner === 'a' ? A.name : c.verdict.winner === 'b' ? B.name : t('tie');
+      const lines = ['newniom ai — ' + A.name + ' vs ' + B.name, t('winner') + ': ' + w];
       if (c.verdict.reason) lines.push(c.verdict.reason);
       lines.push('');
-      METRICS.forEach((k) => lines.push(tr(L, 'm')[k] + ': ' + fmt(L, num(A.scores[k])) + ' / ' + fmt(L, num(B.scores[k]))));
+      METRICS.forEach((k) => lines.push(t('m')[k] + ': ' + fmt(num(A.scores[k])) + ' / ' + fmt(num(B.scores[k]))));
       lines.push('', location.origin + location.pathname);
       return lines.join('\n');
     }
@@ -1127,6 +1207,7 @@
     function autosize() {
       el.input.style.height = 'auto';
       el.input.style.height = Math.min(el.input.scrollHeight, 140) + 'px';
+      syncChatPadding();
     }
     el.input.addEventListener('input', autosize);
     el.input.addEventListener('keydown', (e) => {
@@ -1143,10 +1224,11 @@
       el.stream.replaceChildren();
       const { body } = botShell();
       const bubble = h('div', 'bubble', t('welcome'));
-      bubble.setAttribute('dir', 'auto'); bubble.lang = lang;
+      bubble.setAttribute('dir', 'auto'); bubble.lang = L;
       body.append(bubble);
       showChips('start');
       el.chat.scrollTop = 0;
+      syncChatPadding();
     }
     el.menuToggle.addEventListener('click', () => toggleMenu());
     el.newChat.addEventListener('click', () => {
@@ -1161,7 +1243,6 @@
       if (!el.historyPanel.hidden && !el.historyPanel.contains(e.target) && !el.historyToggle.contains(e.target) && !el.menuToggle.contains(e.target)) toggleHistory(false);
     });
 
-    applyChrome();
     renderHistory();
     resetChat();
   })();
